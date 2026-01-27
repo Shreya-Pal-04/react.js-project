@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+.counter-card {
+  width: 380px;
+  height: 520px;
+  background: #111827;
+  border-radius: 25px;
+  padding: 30px;
+  color: #fff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.counter-heading {
+  font-size: 24px;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+.counter-display {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: #22d3ee;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 52px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+.status-box {
+  width: 100%;
+  background: #1f2933;
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 30px;
+}
+.status-box p {
+  margin: 8px 0;
+  font-size: 15px;
+}
+.status-box span {
+  color: #22d3ee;
+  font-weight: bold;
+}
+.status-empty {
+  text-align: center;
+  color: #fca5a5;
+}
+.action-buttons {
+  display: flex;
+  gap: 20px;
+}
+.action-btn {
+  padding: 12px 28px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  background: #22d3ee;
+  color: #000;
+}
+.action-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

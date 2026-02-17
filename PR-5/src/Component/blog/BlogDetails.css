@@ -1,0 +1,249 @@
+.blog-wrapper {
+  background: #f6f6f6;
+  padding-bottom: 120px;
+  font-family: 'Poppins', sans-serif;
+}
+.container-fluid p{
+  left: 0;
+}
+.blog-breadcrumb {
+  width: 100%;
+  background: #f5f5f5;  
+  margin: 0;           
+  padding: 20px 0;    
+}
+.blog-breadcrumb p {
+  margin: 0;
+  padding-left: 20px;  
+  font-size: 14px;
+  color: #000;
+  text-align: left;
+}
+.blog-breadcrumb a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.3s ease;
+}
+.blog-breadcrumb a:hover {
+  color: #ff3c3c;
+}
+.blog-breadcrumb span {
+  color: #000;
+}
+.blog-breadcrumb a {
+  text-decoration: none;
+  color: #000;
+  transition: color 0.3s ease;
+}
+.blog-breadcrumb a:hover {
+  color: red;
+}
+.blog-breadcrumb span {
+  color: #000;
+}
+.blog-hero {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+}
+.blog-content {
+  width: 80%;
+  margin: 40px auto;  
+}
+.category {
+  display: inline-block;
+  padding: 6px 20px;
+  border-radius: 30px;
+  background: #efefef;
+  font-size: 13px;
+  margin-bottom: 30px;
+}
+.category:hover{
+  background-color: #E10914;
+  color: #fff;
+  transition: 1s;
+}
+.blog-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.author {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 25px;
+}
+.author span {
+  color: #000;
+  font-weight: 500;
+}
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #ddd;
+  margin: 25px auto 40px;
+}
+.blog-text {
+  color: #6f6f6f;
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.9;
+  margin-bottom: 28px;
+}
+.quote-box {
+  border-left: 2px solid #000;
+  padding: 30px 40px;
+  margin: 60px 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  line-height: 1.7;
+  background: #fff;
+}
+.quote-author {
+  margin-top: 15px;
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+.tags {
+  margin-top: 50px;
+}
+.tags span:hover{
+  background-color: #E10914;
+  color: #fff;
+  transition: 1s;
+}
+.tags span {
+  display: inline-block;
+  border: 1px solid #ddd;
+  padding: 6px 18px;
+  border-radius: 30px;
+  font-size: 13px;
+  margin: 5px;
+  background: #fff;
+}
+.comment-section {
+  margin-top: 120px;
+}
+.comment-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+.custom-input {
+  width: 100%;
+  padding: 14px 25px;
+  border-radius: 40px;
+  border: 1px solid #e0e0e0;
+  outline: none;
+  font-size: 14px;
+}
+.custom-textarea {
+  width: 100%;
+  padding: 20px 25px;
+  border-radius: 20px;
+  border: 1px solid #e0e0e0;
+  margin-top: 10px;
+  font-size: 14px;
+}
+.post-btn {
+  margin-top: 40px !important;
+  padding: 12px 40px !important;
+  border-radius: 40px !important;
+  background: #000 !important;
+  color: #fff !important;
+  border: none !important;
+  font-size: 14px !important;
+  transition: 0.3s !important;
+}
+.post-btn:hover {
+  background: #E10914 !important;
+}
+.post-divider {
+  width: 100%;
+  height: 1px;
+  background: #e5e5e5;
+  margin: 20px 0;   
+}
+.post-navigation {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; 
+  width: 100%;
+}
+.dot-wrapper {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.dot-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+@media (max-width: 768px) {
+  .post-navigation {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+  }
+  .dot-wrapper {
+    position: static;   
+    transform: none;
+    margin: 20px 0;
+  }
+  .next-post {
+    margin: 0;
+    text-align: center;
+  }
+}
+.dot-circle span {
+  width: 6px;
+  height: 6px;
+  background: #000;
+  border-radius: 50%;
+}
+.next-post {
+  margin-left: auto;
+  text-align: right;
+  padding-right: 0;
+}
+.next-post:hover{ color: #E10914; }
+.next-label {
+  font-size: 14px;  
+  letter-spacing: 2px;
+}
+.next-label:hover{
+  color: #E10914;
+}
+.next-title {
+  font-size: 22px; 
+}
+.scroll-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #E10914;  
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  font-size: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: 0.3s;
+}
+.scroll-top-btn:hover {
+  background: #000;
+}

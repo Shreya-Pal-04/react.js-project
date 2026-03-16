@@ -18,6 +18,7 @@ const AddProduct = () => {
   };
 
   const [formData, setFormData] = useState(initialState);
+  const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,19 +28,56 @@ const AddProduct = () => {
     });
   };
 
+  const validate = () => {
+  let newErrors = {};
+
+  if (!formData.title.trim()) {
+    newErrors.title = "Title is required";
+  }
+
+  if (!formData.category) {
+    newErrors.category = "Category is required";
+  }
+
+  if (!formData.price) {
+    newErrors.price = "Price is required";
+  }
+
+  if (!formData.quantity) {
+    newErrors.quantity = "Quantity is required";
+  }
+
+  if (!formData.description.trim()) {
+    newErrors.description = "Description is required";
+  }
+
+  if (!formData.image.trim()) {
+    newErrors.image = "Image URL is required";
+  }
+
+  return newErrors;
+};
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    const newProduct = {
-      ...formData,
-      id: generateUniqueId({ length: 6, useLetters: false }),
-    };
-    let data = getStorageData();
-data.push(newProduct);
-setStorageData(data);
+  const validationErrors = validate();
+  setErrors(validationErrors);
 
-navigate("/");
+  if (Object.keys(validationErrors).length > 0) {
+    return;
+  }
+
+  const newProduct = {
+    ...formData,
+    id: generateUniqueId({ length: 6, useLetters: false }),
   };
+
+  let data = getStorageData();
+  data.push(newProduct);
+  setStorageData(data);
+
+  navigate("/");
+};
 
   return (
     <Container className="mt-5 mb-5">
@@ -63,27 +101,34 @@ navigate("/");
                         placeholder="Enter product title"
                         value={formData.title}
                         onChange={handleChange}
-                        required
                       />
+                      {errors.title && (
+  <small className="text-danger">{errors.title}</small>
+)}
                     </Form.Group>
                   </Col>
                   <Col md={6}>
-                    <Form.Group className="mb-3">
-                      <Form.Select
-                        name="category"
-                        value={formData.category}
-                        onChange={handleChange}
-                        required
-                      >
-                        <option value="">Select Category</option>
-                        <option value="Grocery">Grocery</option>
-                        <option value="Vegetables">Vegetables</option>
-                        <option value="Fruits">Fruits</option>
-                        <option value="Beverages">Electronic</option>
-                        <option value="Snacks">Clothing</option>
-                      </Form.Select>
-                    </Form.Group>
-                  </Col>
+  <Form.Group className="mb-3">
+    
+    <Form.Select
+  name="category"
+  value={formData.category}
+  onChange={handleChange}
+>
+  <option value="">Select Category</option>
+  <option value="Grocery">Grocery</option>
+  <option value="Vegetables">Vegetables</option>
+  <option value="Fruits">Fruits</option>
+  <option value="Electronic">Electronic</option>
+  <option value="Clothing">Clothing</option>
+</Form.Select>
+    {errors.category && (
+      <small className="text-danger">
+        {errors.category}
+      </small>
+    )}
+  </Form.Group>
+</Col>
                 </Row>
                 <Row>
                   <Col md={6}>
@@ -94,8 +139,10 @@ navigate("/");
                         placeholder="Enter price"
                         value={formData.price}
                         onChange={handleChange}
-                        required
                       />
+                      {errors.price && (
+  <small className="text-danger">{errors.price}</small>
+)}
                     </Form.Group>
                   </Col>
                   <Col md={6}>
@@ -106,8 +153,10 @@ navigate("/");
                         placeholder="Enter quantity"
                         value={formData.quantity}
                         onChange={handleChange}
-                        required
                       />
+                      {errors.quantity && (
+  <small className="text-danger">{errors.quantity}</small>
+)}
                     </Form.Group>
                   </Col>
                 </Row>
@@ -119,8 +168,10 @@ navigate("/");
                     placeholder="Enter product description"
                     value={formData.description}
                     onChange={handleChange}
-                    required
                   />
+                  {errors.description && (
+  <small className="text-danger">{errors.description}</small>
+)}
                 </Form.Group>
                 <Form.Group className="mb-4">
                   <Form.Control
@@ -130,6 +181,9 @@ navigate("/");
                     value={formData.image}
                     onChange={handleChange}
                   />
+                  {errors.image && (
+  <small className="text-danger">{errors.image}</small>
+)}
                 </Form.Group>
                 <div className="text-center">
                   <Button type="submit" variant="warning"className="px-5 py-2 rounded-pill fw-bold">Add Product</Button>

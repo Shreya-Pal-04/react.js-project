@@ -1,19 +1,26 @@
-import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useParams, Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { deleteCourse, addToCart } from "../../Services/Action/cource.action";
 
 const CourseDetails = () => {
 
   const { id } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const courses = useSelector((state) => state.courses);
+  const cart = useSelector((state) => state.cart);
+  const myLearning = useSelector((state) => state.myLearning);
 
   const course = courses[id];
 
   if (!course) {
     return <h2 className="text-center mt-5">Course Not Found</h2>;
   }
+
+  const isPurchased = myLearning.some(item => item.id === course.id);
+  const isInCart = cart.some(item => item.id === course.id);
 
   return (
 
@@ -46,13 +53,41 @@ const CourseDetails = () => {
 
           <p><b>Rating:</b> ⭐ {course.rating}</p>
 
-          <Button
-            variant="primary"
-            onClick={() => navigate(`/edit/${course.id}`)}
-          >
-            Edit
-          </Button> &nbsp; &nbsp;
-          <Button variant="danger">Delete</Button>
+          <div className="d-flex align-items-center mb-3">
+            {isPurchased ? (
+              <Button as={Link} to="/my-learning" variant="success" className="me-3">Go to Course</Button>
+            ) : isInCart ? (
+              <Button as={Link} to="/cart" variant="warning" className="me-3">Go to Cart</Button>
+            ) : (
+              <Button 
+                variant="dark" 
+                className="me-3"
+                onClick={() => dispatch(addToCart(course))}
+              >
+                Add to Cart
+              </Button>
+            )}
+          </div>
+
+          <div>
+            <Button
+              variant="outline-primary"
+              size="sm"
+              onClick={() => navigate(`/edit/${course.id}`)}
+            >
+              Edit
+            </Button> &nbsp; &nbsp;
+            <Button 
+              variant="outline-danger"
+              size="sm"
+              onClick={() => {
+                dispatch(deleteCourse(course.id));
+                navigate("/");
+              }}
+            >
+              Delete
+            </Button>
+          </div>
 
         </Col>
 

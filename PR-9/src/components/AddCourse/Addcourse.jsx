@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Button, Form, Col, Container, Row, Card } from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
 import "./AddCourse.css";
+import { useNavigate } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { addCourse } from "../../Services/Action/cource.action";
@@ -10,6 +11,7 @@ import { addCourse } from "../../Services/Action/cource.action";
 const AddCourse = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     title: "",
@@ -38,9 +40,14 @@ const AddCourse = () => {
 const handleSubmit = (e) => {
   e.preventDefault();
 
-  dispatch(addCourse(formData));
+  const newCourse = {
+    ...formData,
+    id: Date.now()
+  };
 
-  console.log("Course Added:", formData);
+  dispatch(addCourse(newCourse));
+  console.log("Course Added:", newCourse);
+  navigate("/");
 
   setFormData({
     title: "",

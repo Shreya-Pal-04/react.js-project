@@ -58,10 +58,8 @@ const EditCourse = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        dispatch(addCourse({
-            ...formData,
-            id: Date.now();
-        }));
+        dispatch(updateCourse(formData));
+        navigate("/");
     }
     return (
 

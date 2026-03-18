@@ -11,3 +11,30 @@ export const updateCourse = (course) => {
     payload: course,
   };
 };
+
+export const deleteCourse = (id) => {
+  return {
+    type: "DELETE_COURSE",
+    payload: id,
+  };
+};
+
+export const addToCart = (course) => {
+  return {
+    type: "ADD_TO_CART",
+    payload: course,
+  };
+};
+
+export const removeFromCart = (id) => {
+  return {
+    type: "REMOVE_FROM_CART",
+    payload: id,
+  };
+};
+
+export const purchaseCourses = () => {
+  return {
+    type: "PURCHASE_COURSES",
+  };
+};
